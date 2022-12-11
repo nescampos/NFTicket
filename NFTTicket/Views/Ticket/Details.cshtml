@@ -1,0 +1,75 @@
+﻿@model NFTTicket.Data.Ticket
+
+
+@section Header {
+    <header>
+		<h2>NFT ticket created</h2>
+	</header>
+	<p></p>
+	<ul class="actions">
+		<li><a href="@Url.Action("Create","Ticket")" class="button">Create new ticket</a></li>
+	</ul>
+}
+
+
+<div class="wrapper">
+	<div class="container" id="main">
+        <h2>Details of NFT ticket</h2>
+	<br /><br />
+    <input type="hidden" value="@Guid.NewGuid()" name="Form.Id" id="Form_Id" />
+    <div class="row">
+        <div class="col-3">
+            Event Name
+        </div>
+        <div class="col-3">
+            @Model.Name
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-3">
+            Event Description
+        </div>
+        <div class="col-3">
+            @Model.Description
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-3">
+            Event Place
+        </div>
+        <div class="col-3">
+            @Model.Place
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-3">
+            Event Date
+        </div>
+        <div class="col-3">
+            @Model.Date
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-3">
+            Is Transferable?
+        </div>
+        <div class="col-3">
+            @Model.IsTransferable
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-3">
+            Transfer fee
+        </div>
+        <div class="col-3">
+            @Model.TransferFee
+        </div>
+    </div>
+    <br /><br />			
+	</div>
+</div>

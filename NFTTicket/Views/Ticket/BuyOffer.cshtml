@@ -1,0 +1,42 @@
+﻿@using NFTTicket.Data
+@model IEnumerable<Offer>
+
+@section Header {
+    <header>
+		<h2>Buy NFT ticket</h2>
+	</header>
+	<p>Check the offers and buy NFT tickets</p>
+	<ul class="actions">
+		<li><a href="@Url.Action("SellOffer","Ticket")" class="button">Sell NFT tickets</a></li>
+	</ul>
+}
+
+
+
+<div class="wrapper">
+	<div class="container" id="main">
+        <h2>Buy NFT</h2>
+	<br /><br />
+			<table>
+				<thead>
+					<tr>
+						<td>Token Id</td>
+						<td>Source Account</td>
+						<td>Amount (in XRP)</td>
+						<td>Options</td>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach(var offer in Model)
+					{
+						<tr>
+							<td><a target="_blank" href="https://testnet.xrpl.org/nft/@(offer.NFTokenID)">@offer.NFTokenID</a></td>
+							<td>@offer.AccountId</td>
+							<td>@offer.Amount</td>
+							<td><a href="#" class="btn btn-success" onclick="buyOffer('@(offer.NFTokenID)')">Buy</a></td>
+						</tr>
+					}
+				</tbody>
+			</table>	
+	</div>
+</div>
