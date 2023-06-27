@@ -1,0 +1,115 @@
+﻿@model NFTTicket.Models.TicketModel.CreateTicketViewModel
+@{
+    ViewData["Title"] = "Create ticket";
+}
+
+@section Header {
+    <header>
+		<h2>Create NFT ticket</h2>
+	</header>
+	<p>Create your new ticket</p>
+	<ul class="actions">
+		<li><a href="@Url.Action("List","Ticket")" class="button">List your tickets</a></li>
+	</ul>
+}
+
+
+
+<div class="wrapper">
+	<div class="container" id="main">
+        <h2>Create NFT</h2>
+	<br /><br />
+	@using(Html.BeginForm(FormMethod.Post, new {@id="Form_submitTransaction"}))
+{
+    <input type="hidden" value="@Guid.NewGuid()" name="Form.Id" id="Form_Id" />
+    <input type="hidden" name="Form.AccountId" id="Form_AccountId" />
+    <div class="row">
+        <div class="col-3">
+            Event Name
+        </div>
+        <div class="col-3">
+            @Html.TextBoxFor(x => x.Form.Name, new { @class="form-control", required="required"})
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-3">
+            Event Description
+        </div>
+        <div class="col-3">
+            @Html.TextAreaFor(x => x.Form.Description, new { @class="form-control", required="required"})
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-3">
+            Event Place
+        </div>
+        <div class="col-3">
+            @Html.TextAreaFor(x => x.Form.Place, new { @class="form-control", required="required"})
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-3">
+            Event Date
+        </div>
+        <div class="col-3">
+            <input type="date"name="Form.Date" id="Form_Date"  class="form-control" required="required" />
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-3">
+            Is Transferable?
+        </div>
+        <div class="col-3">
+            @Html.DropDownListFor(x => x.Form.IsTransferable, Model.IsTransferable, "Select an option", new { @class="form-control", required="required"})
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-3">
+            Transfer fee
+        </div>
+        <div class="col-3">
+            <input type="number" class="form-control" min="0" max="50000" name="Form.TransferFee" required="required" id="Form_TransferFee" />
+        </div>
+    </div>
+    <br /><br />
+    <input type="button" onclick="mintToken()" value="Submit" />
+}	
+	<div class="row">
+		<div class="col-2">
+			<p><br /></p>
+		</div>
+		<div class="col-3">
+			<p></p>
+		</div>
+		<div class="col-6">
+			<p class="alert alert-warning" id="errorTrx"></p>
+		</div>
+	</div>
+						
+	</div>
+</div>
+
+
+
+
+    
+
+
+@section Scripts
+{
+    
+    <script type="text/javascript">
+        $(function()
+        {
+            
+            checkSeed();
+        })
+        
+    </script>
+
+}

@@ -1,0 +1,72 @@
+﻿@model string
+
+@section Header {
+    <header>
+		<h2>Sell NFT ticket</h2>
+	</header>
+	<p>Sell your ticket</p>
+	<ul class="actions">
+		<li><a href="#" onclick="clickBuyOffer()" class="button">Buy NFT tickets</a></li>
+	</ul>
+}
+
+<div class="wrapper">
+	<div class="container" id="main">
+        <h2>Sell NFT</h2>
+	<br /><br />
+	@using(Html.BeginForm(FormMethod.Post, new {@id="Form_submitTransaction"}))
+{
+    <input type="hidden" value="@Guid.NewGuid()" name="Form.Id" id="Form_Id" />
+    <input type="hidden" name="NFTokenID" id="NFTokenID" value="@Model" />
+    <input type="hidden" name="AccountId" id="AccountId" />
+    <input type="hidden" name="OfferType" id="OfferType" value="Sell" />
+    <div class="row">
+        <div class="col-7">
+            <b>You are selling your NFT with id: @Model</b>
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-3">
+            Amount
+        </div>
+        <div class="col-3">
+            <input type="number" min="1" class="form-control" required="required" name="Amount" id="Amount" />
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-3">
+            Destination
+        </div>
+        <div class="col-3">
+            <input type="text" class="form-control" required="required" name="Destination" id="Destination" />
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-3">
+            Expiration days
+        </div>
+        <div class="col-3">
+            <input type="number" min="1" max="30" class="form-control" required="required" name="ExpirationDays" id="ExpirationDays" />
+        </div>
+    </div>
+    <br /><br />
+    <br /><br />
+    <input type="button" onclick="createSellOffer()" value="Submit" />
+}	
+	<div class="row">
+		<div class="col-2">
+			<p><br /></p>
+		</div>
+		<div class="col-3">
+			<p></p>
+		</div>
+		<div class="col-6">
+			<p class="alert alert-warning" id="errorTrx"></p>
+		</div>
+	</div>
+						
+	</div>
+</div>

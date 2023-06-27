@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@section Header {
+    <header>
+		<h2>Ckeck your NFT tickets</h2>
+	</header>
+	<p>Here is a list with your NFT tickets</p>
+	<ul class="actions">
+		<li><a href="@Url.Action("Create","Ticket")" class="button">Create your NFT ticket</a></li>
+	</ul>
+}
+
+<div class="wrapper">
+	<div class="container" id="main">
+        <div class="row col-12">
+            <div class="alert alert-info">
+                You are watching a list with your NFT tickets.
+            </div>
+        </div>
+		<div class="row gtr-0">
+            <div class="col-12-narrower">
+                <p class="nftList">
+
+                </p>
+            </div>
+			
+
+		</div>
+						
+	</div>
+</div>
+
+
+@section Scripts
+{
+    
+    <script type="text/javascript">
+        $(function()
+        {
+            
+            checkSeed();
+            getTokens();
+        })
+        
+    </script>
+
+}
